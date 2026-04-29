@@ -6,7 +6,9 @@
 
 <title>Nuestra Boda</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+
 
 <style>
 
@@ -14,7 +16,8 @@
 body{
   font-family:'Poppins',sans-serif;
   margin:0;
-  background:url('https://images.unsplash.com/photo-1529636798458-92182e662485') center/cover fixed;
+	background:url('fondo.jpg') center/cover fixed;
+
 }
 
 /* ===== INTRO ===== */
@@ -47,6 +50,15 @@ body{
   background:rgba(240,248,255,.6);
   backdrop-filter:blur(8px);
 }
+.nombres{
+  font-family:'Allura', cursive;
+  font-size:64px;
+  text-align:center;
+  background:linear-gradient(90deg,#1e3a8a,#60a5fa,#cbd5f5);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
 
 /* contenedor */
 .container{
@@ -66,14 +78,13 @@ body{
   border-radius:25px;
   padding:25px;
   border:1px solid rgba(255,255,255,0.3);
-  box-shadow:0 15px 40px rgba(30,58,138,0.25);
+  box-shadow:0 25px 60px rgba(0,0,0,0.25);
   opacity:0;
   transform:translateY(40px);
-  transition:all 1s ease;
+  transition:all 1.2s cubic-bezier(.22,1,.36,1);
   position:relative;
   overflow:hidden;
 }
-
 .card.show{opacity:1;transform:translateY(0)}
 
 /* brillo */
@@ -93,6 +104,140 @@ body{
 @keyframes shineMove{
   0%{left:-100%}
   100%{left:100%}
+}
+
+/* ===== FOTO ARRIESGADA ===== */
+.foto-wrapper{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  margin-bottom:25px;
+  position:relative;
+}
+
+/* ondas laterales */
+.wave{
+  width:70px;
+  height:120px;
+  position:relative;
+}
+
+.wave::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-left:2px solid #60a5fa;
+  border-radius:50%;
+  animation:waveMove 3s ease-in-out infinite;
+  opacity:.6;
+}
+
+.wave::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-left:2px solid #93c5fd;
+  border-radius:50%;
+  animation:waveMove 3s ease-in-out infinite reverse;
+  opacity:.4;
+}
+
+.wave.right::before,
+.wave.right::after{
+  border-left:none;
+  border-right:2px solid #60a5fa;
+}
+
+@keyframes waveMove{
+  0%,100%{transform:scaleY(1)}
+  50%{transform:scaleY(1.3)}
+}
+
+/* foto */
+.foto-container{
+  position:relative;
+  width:190px;
+  height:190px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.foto-novios{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  z-index:4;
+  border:6px solid rgba(255,255,255,0.9);
+  box-shadow:0 25px 60px rgba(0,0,0,.4);
+}
+
+/* aro base */
+.foto-container::before{
+  content:"";
+  position:absolute;
+  inset:-12px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#93c5fd,#ffffff,#60a5fa);
+  z-index:1;
+}
+
+/* halo */
+.halo{
+  position:absolute;
+  inset:-20px;
+  border-radius:50%;
+  background:conic-gradient(
+    transparent,
+    #60a5fa,
+    white,
+    #60a5fa,
+    transparent
+  );
+  animation:spin 6s linear infinite;
+  filter:blur(6px);
+  opacity:.7;
+  z-index:2;
+}
+
+/* orbita */
+.orbita{
+  position:absolute;
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  border:1px dashed rgba(96,165,250,0.4);
+  animation:spin 12s linear infinite;
+  z-index:1;
+}
+
+/* brillo */
+.foto-container::after{
+  content:"";
+  position:absolute;
+  width:26px;
+  height:26px;
+  top:15px;
+  right:20px;
+  background:radial-gradient(circle, white 20%, transparent 70%);
+  border-radius:50%;
+  animation:sparkle 2s infinite ease-in-out;
+  z-index:5;
+}
+
+/* animaciones */
+@keyframes spin{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(360deg)}
+}
+
+@keyframes sparkle{
+  0%,100%{opacity:0; transform:scale(.5)}
+  50%{opacity:1; transform:scale(1.2)}
 }
 
 /* títulos */
@@ -120,18 +265,9 @@ body{
   font-style:italic;
 }
 
-/* frase */
-.frase2{
-  font-size:15px;
-  text-align:center;
-  margin-top:10px;
-  font-style:Arial;
-}
-
-
 /* botón */
 .btn{
-  background:linear-gradient(45deg,#1e3a8a,#60a5fa);
+  background:linear-gradient(45deg,#1e3a8a,#3b82f6);
   color:white;
   padding:12px;
   border-radius:999px;
@@ -139,38 +275,32 @@ body{
   text-align:center;
   margin-top:15px;
   transition:.4s;
+  font-weight:600;
+  letter-spacing:1px;
 }
-.btn:hover{
-  transform:scale(1.05);
-}
+.btn:hover{transform:scale(1.05)}
 
-/* ===== COUNTDOWN ===== */
+/* COUNTDOWN */
 #countdown{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:10px;
 }
-
 .flip-inner{
   background:white;
   border-radius:15px;
   padding:10px;
   text-align:center;
 }
-
 .time-number{
   font-size:22px;
   font-weight:bold;
   color:#1e3a8a;
 }
+.time-label{font-size:10px}
 
-.time-label{
-  font-size:10px;
-}
-
-/* ===== ITINERARIO ===== */
+/* ITINERARIO */
 .timeline{margin-top:20px}
-
 .timeline-box{
   background:white;
   padding:12px;
@@ -178,7 +308,6 @@ body{
   margin-bottom:10px;
   box-shadow:0 8px 20px rgba(0,0,0,.1);
 }
-
 .timeline-box span{
   display:block;
   margin-top:5px;
@@ -187,14 +316,13 @@ body{
   color:#1e3a8a;
 }
 
-/* ===== ALBUM ===== */
+/* ALBUM */
 #album{position:relative}
 #album img{
   width:100%;
   border-radius:15px;
   transition:.5s;
 }
-
 .arrow{
   position:absolute;
   top:50%;
@@ -213,37 +341,45 @@ body{
   font-weight:700;
   font-size:18px;
 }
+
+.ubicacion-btn{
+  margin-top:15px;
+  background:linear-gradient(45deg,#1e3a8a,#3b82f6);
+  box-shadow:0 10px 25px rgba(37,99,235,.4);
+}
 .boda-texto{
   text-align:center;
   margin-top:10px;
   font-family:'Cormorant Garamond',serif;
-
   font-size:14px;
-  letter-spacing:6px; /* 👈 separa letras */
-
+  letter-spacing:6px;
   color:#60a5fa;
-
-  position:relative;
 }
-
-/* línea arriba */
-.boda-texto::before{
-  content:"";
-  display:block;
-  width:50%;
-  height:1px;
-  margin:0 auto 8px;
-  background:linear-gradient(to right,transparent,#60a5fa,transparent);
-}
-
-/* línea abajo */
+.boda-texto::before,
 .boda-texto::after{
   content:"";
   display:block;
   width:50%;
   height:1px;
-  margin:8px auto 0;
+  margin:8px auto;
   background:linear-gradient(to right,transparent,#60a5fa,transparent);
+}
+.nombres{
+  font-family:'Great Vibes';
+  font-size:68px;
+  text-align:center;
+  background:linear-gradient(90deg,#1e3a8a,#60a5fa,#cbd5f5);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  letter-spacing:2px;
+}
+
+/* el & elegante */
+.amp{
+  font-family:'Cormorant Garamond',serif;
+  font-size:40px;
+  margin:0 5px;
+  vertical-align:middle;
 }
 
 
@@ -277,10 +413,25 @@ body{
 
 <!-- BLOQUE 1 -->
 <div class="card text-center">
-<h1 class="title">Alejandra & Brandon</h1>
 
-<p class="boda-texto">NUESTRA BODA <br>
-11/07/2026</p>
+<div class="foto-wrapper">
+
+ 
+
+  <div class="foto-container">
+    <div class="halo"></div>
+    <div class="orbita"></div>
+    <img src="fotopp.jpg" class="foto-novios">
+  </div>
+
+
+</div>
+
+<h1 class="nombres">
+  Alejandra <span class="amp">&</span> Brandon
+</h1>
+
+<p class="boda-texto">NUESTRA BODA <br>11/07/2026</p>
 
 <p class="frase">
 “Con la bendición de Dios y el amor que nos une,
@@ -292,36 +443,22 @@ te invitamos a ser parte de este momento tan especial.”
 <a href="https://wa.me/526521066098?text=Hola,%20confirmo%20mi%20asistencia%20a%20su%20boda%20🎉" class="btn">Confirmar asistencia</a>
 </div>
 
-<!-- BLOQUE 2 ITINERARIO -->
+<!-- BLOQUE 2 -->
 <div class="card text-center">
 <h2 class="title" style="font-size:40px">Itinerario</h2>
 <div class="divider"></div>
 
 <div class="timeline">
-
-<div class="timeline-box">
-⛪ Ceremonia - 5:30 PM
-<span>Iglesia de San Francisco Javier</span>
-</div>
-
-<div class="timeline-box">
-🎉 Recepción & Baile - 9:00 PM
-</div>
-
-<div class="timeline-box">
-🥂 Brindis - 12:00 AM
-</div>
-
-<div class="timeline-box">
-🎊 Fin - 4:00 AM
-</div>
-
+<div class="timeline-box">⛪ Ceremonia - 5:30 PM<span>Iglesia de San Francisco Javier</span></div>
+<div class="timeline-box">🎉 Recepción & Baile - 9:00 PM</div>
+<div class="timeline-box">🥂 Brindis - 12:00 AM</div>
+<div class="timeline-box">🎊 Fin - 4:00 AM</div>
 </div>
 </div>
 
 <!-- BLOQUE 3 -->
 <div class="card text-center">
-<h2 class="title" style="font-size:40px">Álbum</h2>
+<h2 class="title" style="font-size:40px">Galeria</h2>
 
 <div id="album">
 <img src="1.jpg" id="img">
@@ -339,11 +476,17 @@ te invitamos a ser parte de este momento tan especial.”
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3491.340685667146!2d-107.8336491!3d28.947618000000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86c159bb04ce083b%3A0xe7af592edc211f6e!2sEL%20MIRADOR%20SALON%20DE%20EVENTOS!5e0!3m2!1ses-419!2smx!4v1775601146592!5m2!1ses-419!2smx" width="100%" height="200"></iframe>
 
-</div>
+
+<a href="https://www.google.com/maps?q=28.947618,-107.8336491" target="_blank" class="btn ubicacion-btn">
+ COMO LLEGAR 📍
+</a>
+
 
 </div>
 
-<audio id="music" autoplay muted loop>
+</div>
+
+<audio id="music" loop playsinline>
 <source src="boda.mp3">
 </audio>
 
@@ -351,14 +494,8 @@ te invitamos a ser parte de este momento tan especial.”
 
 /* MUSICA */
 const music = document.getElementById("music");
-
-["click","touchstart","scroll"].forEach(event=>{
-  document.addEventListener(event, ()=>{
-    music.muted=false;
-    music.volume=0.7;
-    music.play().catch(()=>{});
-  },{once:true});
-});
+document.addEventListener("click", ()=>{music.play();},{once:true});
+document.addEventListener("touchstart", ()=>{music.play();},{once:true});
 
 /* COUNTDOWN */
 const date=new Date("2026-07-11T17:00:00");
@@ -371,7 +508,6 @@ document.getElementById("countdown").innerHTML=`
 <div class="flip-inner"><div class="time-number" id="s">0</div><div class="time-label">SEG</div></div>
 `;
 }
-
 createCountdown();
 
 setInterval(()=>{
