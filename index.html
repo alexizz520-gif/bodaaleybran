@@ -395,6 +395,109 @@ body{
   to{transform:translateY(-10vh)}
 }
 
+
+
+
+.subtitulo-fotos{
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px;
+    letter-spacing:5px;
+    color:#60a5fa;
+    text-transform:uppercase;
+    margin-top:-5px;
+    margin-bottom:25px;
+}
+
+
+/* ===== COMPARTIR FOTOS ===== */
+
+.fotos-boda{
+  text-align:center;
+}
+
+.fotos-icono{
+  font-size:60px;
+  margin-bottom:10px;
+}
+
+.fotos-boda p{
+  line-height:1.8;
+  color:#555;
+}
+
+.btn-fotos{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 30px;
+  border-radius:999px;
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  letter-spacing:1px;
+  background:linear-gradient(45deg,#1e3a8a,#60a5fa);
+  box-shadow:0 10px 25px rgba(37,99,235,.35);
+  transition:.4s;
+}
+
+.btn-fotos:hover{
+  transform:translateY(-3px) scale(1.03);
+}
+
+.qr-box{
+  margin-top:25px;
+}
+
+.qr-box img{
+  width:180px;
+  height:180px;
+  border-radius:18px;
+  background:white;
+  padding:10px;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.qr-text{
+  display:block;
+  margin-top:12px;
+  color:#666;
+  font-size:13px;
+  letter-spacing:1px;
+}
+.titulo-fotos{
+    font-family:'Allura', cursive;
+    font-size:58px;
+    font-weight:normal;
+    text-align:center;
+    margin:0;
+    line-height:1.1;
+
+    background:linear-gradient(
+        90deg,
+        #1e3a8a,
+        #60a5fa,
+        #cbd5f5,
+        #60a5fa,
+        #1e3a8a
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+      0 0 15px rgba(96,165,250,.25);
+
+    letter-spacing:1px;
+}
+.texto-fotos{
+    font-family:'Cormorant Garamond', serif;
+    font-size:24px;
+    line-height:1.8;
+    color:#4b5563;
+    text-align:center;
+    margin-bottom:18px;
+    letter-spacing:.5px;
+}
+
 </style>
 </head>
 
@@ -467,7 +570,43 @@ te invitamos a ser parte de este momento tan especial.”
 </div>
 </div>
 
-<!-- BLOQUE 4 -->
+
+<!-- BLOQUE 4 - COMPARTIR FOTOS -->
+<div class="card fotos-boda">
+
+<h2 class="titulo-fotos">
+Nuestros Recuerdos
+</h2>
+
+<div class="divider"></div>
+
+<p class="texto-fotos">
+Cada sonrisa, cada abrazo y cada instante compartido
+forma parte de los recuerdos que atesoraremos para siempre.
+</p>
+
+<p class="texto-fotos">
+Nos encantaría revivir nuestra boda a través de tu mirada.
+Comparte las fotografías y videos que captures durante
+esta celebración tan especial.
+</p>
+
+<a href="https://drive.google.com/drive/folders/1mKefsGeL9Tajn62JR19He9Syn5dimAPz?usp=sharing"
+   target="_blank"
+   class="btn-fotos">
+📸 Subir Fotos
+</a>
+
+<div class="qr-box">
+<img src="QR_Fotos_Boda_Alejandra_Brandon.png" alt="QR Fotos">
+<span class="qr-text">
+ESCANEA EL CÓDIGO PARA COMPARTIR TUS FOTOS
+</span>
+</div>
+
+</div>
+
+<!-- BLOQUE 5 -->
 <div class="card text-center">
 <h2 class="title" style="font-size:40px">Ubicación</h2>
 <div class="divider"></div>
